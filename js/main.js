@@ -89,9 +89,8 @@ function renderServices() {
       <ol class="svc">
         ${list
           .map(
-            (s, i) => `
+            (s) => `
           <li class="svc__item reveal">
-            <span class="svc__num" aria-hidden="true">${String(i + 1).padStart(2, '0')}</span>
             <div class="svc__body">
               <h3 class="svc__name">${esc(s.nome)} ${pend(s)}</h3>
               <p class="svc__desc">${esc(s.descricao)}</p>
@@ -156,9 +155,8 @@ function renderProcess() {
         <ol class="steps">
           ${etapas
             .map(
-              (e, i) => `
+              (e) => `
             <li class="steps__item reveal">
-              <span class="steps__num" aria-hidden="true">${String(i + 1).padStart(2, '0')}</span>
               <div>
                 <h3 class="steps__title">${esc(e.titulo)} ${pend(e)}</h3>
                 <p>${esc(e.texto)}</p>
