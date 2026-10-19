@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Página não encontrada | Vitória Sampaio Arquitetura</title>
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Manrope:wght@400;600&display=swap">
+  <style>
+    /* Estilos embutidos: a 404 pode ser servida em qualquer caminho */
+    *{box-sizing:border-box}
+    body{margin:0;min-height:100svh;display:grid;place-items:center;background:#1d1c1a;color:#efe9df;font:400 1rem/1.6 'Manrope',system-ui,sans-serif;padding:24px;
+      background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:40px 40px}
+    main{max-width:560px}
+    p.k{font-size:.72rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#b3aa9d}
+    h1{font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(2.6rem,10vw,4.4rem);line-height:1;margin:12px 0 20px}
+    p{color:#b3aa9d}
+    a{display:inline-flex;align-items:center;min-height:50px;padding:0 26px;margin-top:16px;background:#8c5e43;color:#fff;text-decoration:none;font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;border-radius:2px}
+    a:hover{background:#efe9df;color:#1d1c1a}
+    a:focus-visible{outline:2px solid #efe9df;outline-offset:3px}
+  </style>
+</head>
+<body>
+  <main>
+    <p class="k">Erro 404</p>
+    <h1>Este espaço ainda não foi projetado.</h1>
+    <p>A página que você procura não existe ou mudou de endereço.</p>
+    <a id="home" href="/">Voltar ao início</a>
+  </main>
+  <script>
+    // Em project pages do GitHub (usuario.github.io/repositorio/), aponta para a raiz do repositório.
+    // Se usar domínio próprio ou usuario.github.io, defina BASE = '/'.
+    var BASE = '';
+    if (!BASE) {
+      var seg = location.pathname.split('/').filter(Boolean)[0];
+      BASE = /github\.io$/.test(location.hostname) && seg ? '/' + seg + '/' : '/';
+    }
+    document.getElementById('home').href = BASE;
+  </script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "name": "vitoria-sampaio-arquitetura",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Site de Vitória Sampaio Arquitetura — estático, pronto para GitHub Pages (branch main, pasta raiz).",
+  "scripts": {
+    "dev": "vite --open",
+    "pendencias": "node scripts/pendencias.mjs",
+    "imagens": "node scripts/otimizar-imagens.mjs"
+  },
+  "devDependencies": {
+    "sharp": "^0.33.5",
+    "vite": "^6.0.0"
+  }
+}
