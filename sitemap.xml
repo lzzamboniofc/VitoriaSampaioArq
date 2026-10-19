@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Substitua a URL abaixo pelo endereço final do site antes de enviar ao Google -->
+
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://SEU-USUARIO.github.io/SEU-REPOSITORIO/</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://SEU-USUARIO.github.io/SEU-REPOSITORIO/privacidade.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://lzzamboniofc.github.io/VitoriaSampaioArq/</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://lzzamboniofc.github.io/VitoriaSampaioArq/privacidade.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
 </urlset>

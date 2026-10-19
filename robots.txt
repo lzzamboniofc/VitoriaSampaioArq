@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 
-# Depois de publicar, descomente e ajuste com a URL final:
-# Sitemap: https://SEU-USUARIO.github.io/SEU-REPOSITORIO/sitemap.xml
+
+Sitemap: https://lzzamboniofc.github.io/VitoriaSampaioArq/sitemap.xml

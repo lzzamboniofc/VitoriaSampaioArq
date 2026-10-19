@@ -17,7 +17,7 @@ export const site = {
   modoDemonstracao: true,
 
   // URL final do site, com barra no final (ex.: https://usuario.github.io/repositorio/)
-  urlSite: '',
+  urlSite: 'https://lzzamboniofc.github.io/VitoriaSampaioArq/',
 
   marca: {
     nome: 'Vitória Sampaio',
