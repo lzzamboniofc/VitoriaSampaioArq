@@ -365,7 +365,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 /* formulário de orçamento */
 .quote { background: var(--paper); padding: clamp(24px, 5vw, 44px); border-top: 2px solid var(--accent); box-shadow: 0 18px 40px rgba(31,29,26,.07); }
 .quote__title { font-family: var(--serif); font-size: clamp(1.8rem, 5vw, 2.3rem); line-height: 1.1; }
-.quote__lead { margin: 10px 0 26px; color: var(--muted); font-size: .96rem; }
+.quote__lead { margin: 8px 0 22px; color: var(--muted); font-size: .96rem; }
 .quote__row { display: grid; gap: 0 16px; }
 .quote__field { margin-bottom: 18px; min-width: 0; }
 .quote__field label { display: block; margin-bottom: 6px; font-size: .68rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
@@ -373,13 +373,18 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   width: 100%; padding: 12px 14px; border: 1px solid var(--line); border-radius: var(--radius);
   background: #fff; color: var(--ink); font: 400 1rem/1.4 var(--sans); transition: border-color .25s, box-shadow .25s;
 }
-.quote textarea { resize: vertical; min-height: 120px; }
+.quote textarea { resize: vertical; min-height: 92px; }
 .quote input:focus, .quote select:focus, .quote textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(140,94,67,.15); }
-.quote__btn { width: 100%; margin-top: 6px; }
-.quote__note { margin: 14px 0 0; font-size: .8rem; color: var(--muted); text-align: center; }
+.quote__foot { display: flex; flex-direction: column; gap: 12px; margin-top: 4px; }
+.quote__btn { width: 100%; }
+.quote__note { margin: 0; font-size: .8rem; color: var(--muted); text-align: center; }
 @media (min-width: 560px) { .quote__row { grid-template-columns: 1fr 1fr; } }
-@media (min-width: 960px) { .contact__grid { align-items: start; } }
-@media (min-width: 960px) { .contact__grid { grid-template-columns: 6fr 5fr; gap: clamp(56px, 8vw, 120px); align-items: center; } .contact__actions .btn { flex: 0 0 auto; } }
+@media (min-width: 768px) {
+  .quote__foot { flex-direction: row; align-items: center; gap: 20px; }
+  .quote__btn { width: auto; flex: none; padding-inline: 32px; }
+  .quote__note { text-align: left; }
+}
+@media (min-width: 960px) { .contact__grid { grid-template-columns: 5fr 7fr; gap: clamp(48px, 5vw, 80px); align-items: start; } .contact__body .section__head { margin-bottom: 40px; } .contact__actions .btn { flex: 0 0 auto; } }
 
 /* ---------- rodapé ---------- */
 .footer { background: var(--dark); color: var(--on-dark); padding-top: clamp(64px, 10vw, 112px); }

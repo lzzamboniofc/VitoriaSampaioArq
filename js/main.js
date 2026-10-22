@@ -309,34 +309,36 @@ function quoteForm() {
     <form class="quote reveal" data-quote novalidate aria-labelledby="quote-titulo">
       <h3 class="quote__title" id="quote-titulo">${esc(f.titulo)}</h3>
       <p class="quote__lead">${esc(f.texto)}</p>
-      <div class="quote__field">
-        <label for="q-nome">Nome</label>
-        <input id="q-nome" name="nome" type="text" autocomplete="name" required>
-      </div>
       <div class="quote__row">
         <div class="quote__field">
-          <label for="q-email">E-mail</label>
-          <input id="q-email" name="email" type="email" autocomplete="email">
+          <label for="q-nome">Nome</label>
+          <input id="q-nome" name="nome" type="text" autocomplete="name" required>
         </div>
         <div class="quote__field">
           <label for="q-tel">WhatsApp</label>
           <input id="q-tel" name="telefone" type="tel" autocomplete="tel" inputmode="tel">
         </div>
+        <div class="quote__field">
+          <label for="q-email">E-mail</label>
+          <input id="q-email" name="email" type="email" autocomplete="email">
+        </div>
+        ${
+          opcoes
+            ? `<div class="quote__field">
+          <label for="q-servico">Tipo de projeto</label>
+          <select id="q-servico" name="servico"><option value="">Selecione (opcional)</option>${opcoes}</select>
+        </div>`
+            : ''
+        }
       </div>
-      ${
-        opcoes
-          ? `<div class="quote__field">
-        <label for="q-servico">Tipo de projeto</label>
-        <select id="q-servico" name="servico"><option value="">Selecione (opcional)</option>${opcoes}</select>
-      </div>`
-          : ''
-      }
       <div class="quote__field">
         <label for="q-msg">Sobre o projeto</label>
-        <textarea id="q-msg" name="mensagem" rows="4" placeholder="Ambiente, tamanho aproximado, cidade, prazo..." required></textarea>
+        <textarea id="q-msg" name="mensagem" rows="3" placeholder="Ambiente, tamanho aproximado, cidade, prazo..." required></textarea>
       </div>
-      <button class="btn btn--accent quote__btn" type="submit">${esc(c.whatsapp ? f.botao : f.botaoSemWhatsapp)}</button>
-      <p class="quote__note" data-quote-status aria-live="polite">${aviso}</p>
+      <div class="quote__foot">
+        <button class="btn btn--accent quote__btn" type="submit">${esc(c.whatsapp ? f.botao : f.botaoSemWhatsapp)}</button>
+        <p class="quote__note" data-quote-status aria-live="polite">${aviso}</p>
+      </div>
     </form>`;
 }
 
