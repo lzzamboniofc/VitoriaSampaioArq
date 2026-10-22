@@ -1,93 +1,667 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Vitória Sampaio Arquitetura | Projetos de arquitetura e interiores</title>
-  <meta name="description" content="Vitória Sampaio Arquitetura: projetos de arquitetura e interiores desenvolvidos com escuta, cuidado técnico e atenção aos detalhes. Solicite seu orçamento.">
-  <meta name="theme-color" content="#1d1c1a">
-  <link rel="canonical" href="./">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO e Redes Sociais -->
+  <title>Vitória Sampaio | Arquitetura & Interiores</title>
+  <meta name="description" content="Projetos arquitetônicos e de interiores focados em sofisticação, funcionalidade e elegância. Solicite seu orçamento.">
+  <meta name="keywords" content="arquitetura, interiores, projetos arquitetonicos, design de interiores, vitoria sampaio">
 
+  <!-- Open Graph / Meta Tags -->
+  <meta property="og:title" content="Vitória Sampaio | Arquitetura & Interiores">
+  <meta property="og:description" content="Transformando espaços em experiências únicas. Conheça nosso portfólio.">
+  <meta property="og:image" content="https://lzzamboniofc.github.io/VitoriaSampaioArq/assets/img/og-image.png">
   <meta property="og:type" content="website">
-  <meta property="og:locale" content="pt_BR">
-  <meta property="og:site_name" content="Vitória Sampaio Arquitetura">
-  <meta property="og:title" content="Vitória Sampaio Arquitetura">
-  <meta property="og:description" content="Projetos de arquitetura e interiores pensados a partir de quem vai habitar cada espaço.">
-  <meta property="og:image" content="assets/img/og-image.png">
-  <meta name="twitter:card" content="summary_large_image">
 
-  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <!-- Favicon -->
+  <link href="assets/img/favicon.svg" rel="icon" type="image/svg+xml">
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 
+  <!-- Fontes Google -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap">
-  <link rel="stylesheet" href="css/styles.css">
-  <script type="module" src="js/main.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-primary: #fcfcfc;
+      --bg-card: #ffffff;
+      --text-main: #222222;
+      --text-muted: #666666;
+      --accent: #111111;
+      --accent-gold: #c5a059;
+      --whatsapp: #25d366;
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+    }
+
+    /* Header & Navegação */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      transition: var(--transition);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.2rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--accent);
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .logo span {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 300;
+      display: block;
+      letter-spacing: 3px;
+      color: var(--accent-gold);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-main);
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-gold);
+    }
+
+    .btn-header {
+      padding: 0.6rem 1.4rem;
+      border: 1px solid var(--accent);
+      background: transparent;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: var(--transition);
+    }
+
+    .btn-header:hover {
+      background: var(--accent);
+      color: #ffffff;
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #ffffff;
+      padding: 0 1.5rem;
+    }
+
+    .hero-content {
+      max-width: 800px;
+    }
+
+    .hero h1 {
+      font-size: 3.2rem;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      font-weight: 300;
+      margin-bottom: 2rem;
+      letter-spacing: 0.5px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      padding: 0.9rem 2.2rem;
+      background: var(--accent-gold);
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: var(--transition);
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background: #b08d46;
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      padding: 0.9rem 2.2rem;
+      background: transparent;
+      color: #ffffff;
+      border: 1px solid #ffffff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: var(--transition);
+    }
+
+    .btn-secondary:hover {
+      background: #ffffff;
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    /* Seções Gerais */
+    section {
+      padding: 6rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .section-title h2 {
+      font-size: 2.4rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title p {
+      color: var(--accent-gold);
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      font-weight: 600;
+    }
+
+    /* Sobre mim */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-img img {
+      width: 100%;
+      border-radius: 4px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+      object-fit: cover;
+    }
+
+    .about-text h3 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-text p {
+      color: var(--text-muted);
+      margin-bottom: 1.2rem;
+      font-size: 1rem;
+    }
+
+    /* Projetos & Filtros */
+    .portfolio-filter {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: 0.5rem 1.5rem;
+      border: 1px solid #e0e0e0;
+      background: transparent;
+      color: var(--text-muted);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: var(--transition);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--accent);
+      color: #ffffff;
+      border-color: var(--accent);
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 4px;
+      cursor: pointer;
+      height: 380px;
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .project-card:hover img {
+      transform: scale(1.08);
+    }
+
+    .project-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 60%, transparent 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 2rem;
+      color: #ffffff;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .project-card:hover .project-overlay {
+      opacity: 1;
+    }
+
+    .project-overlay h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .project-overlay p {
+      font-size: 0.85rem;
+      color: var(--accent-gold);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Modal Ampliação */
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.9);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-content {
+      max-width: 900px;
+      max-height: 85vh;
+      border-radius: 4px;
+      object-fit: contain;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      color: #ffffff;
+      font-size: 2.5rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    /* Contato */
+    .contact-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      background: var(--bg-card);
+      padding: 3rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      border-radius: 4px;
+    }
+
+    .contact-info h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .contact-info p {
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.2rem;
+      color: var(--text-main);
+    }
+
+    .contact-form form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .form-group input, .form-group textarea {
+      width: 100%;
+      padding: 0.9rem;
+      border: 1px solid #e0e0e0;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem;
+      border-radius: 4px;
+      outline: none;
+      transition: var(--transition);
+    }
+
+    .form-group input:focus, .form-group textarea:focus {
+      border-color: var(--accent-gold);
+    }
+
+    /* Botão Flutuante WhatsApp */
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: var(--whatsapp);
+      color: #ffffff;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+      z-index: 1000;
+      text-decoration: none;
+      font-size: 1.8rem;
+      transition: var(--transition);
+    }
+
+    .whatsapp-btn:hover {
+      transform: scale(1.1);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2.5rem;
+      border-top: 1px solid rgba(0,0,0,0.05);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .about-grid, .contact-container { grid-template-columns: 1fr; gap: 2rem; }
+      .hero h1 { font-size: 2.2rem; }
+      .portfolio-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 400px) {
+      .nav-container { padding: 1rem 1.25rem; gap: 0.75rem; }
+      .logo { font-size: 1.2rem; }
+      .btn-header { padding: 0.55rem 0.9rem; }
+      section { padding: 4.5rem 1.25rem; }
+      .contact-container { padding: 1.75rem; }
+    }
+  </style>
 </head>
 <body>
-  <a class="skip" href="#conteudo">Pular para o conteúdo</a>
 
-  <header class="header" id="topo">
-    <div class="header__inner wrap">
-      <a class="brand" href="#inicio" aria-label="Início" data-brand></a>
-      <nav class="nav" id="menu" aria-label="Menu principal">
-        <ul class="nav__list" data-nav></ul>
-        <a class="btn btn--solid nav__cta" data-cta href="#contato">Solicitar orçamento</a>
-      </nav>
-      <a class="btn btn--line header__cta" data-cta href="#contato">Solicitar orçamento</a>
-      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">
-        <span class="sr-only">Abrir menu</span>
-        <span class="menu-btn__bars" aria-hidden="true"></span>
-      </button>
+  <!-- Header -->
+  <header>
+    <div class="nav-container">
+      <a href="#inicio" class="logo">
+        Vitória Sampaio
+        <span>Arquitetura</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#inicio">Início</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#projetos">Projetos</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+      <a href="#contato" class="btn-header">Orçamento</a>
     </div>
   </header>
 
-  <main id="conteudo">
-    <section class="hero" id="inicio" aria-labelledby="hero-titulo">
-      <div class="hero__media" data-hero-media></div>
-      <div class="hero__content wrap">
-        <p class="eyebrow eyebrow--light" data-hero-eyebrow></p>
-        <h1 class="hero__title" id="hero-titulo" data-hero-title></h1>
-        <p class="hero__text" data-hero-text></p>
-        <div class="hero__actions">
-          <a class="btn btn--accent" data-cta href="#contato">Solicitar orçamento</a>
-          <a class="btn btn--ghost-light" href="#projetos">Ver projetos</a>
+  <!-- Hero Section -->
+  <section id="inicio" class="hero">
+    <div class="hero-content">
+      <h1>Arquitetura que transforma experiências e espaços</h1>
+      <p>Projetos residenciais e comerciais desenvolvidos com sofisticação, funcionalidade e identidade única.</p>
+      <div class="hero-buttons">
+        <a href="#projetos" class="btn-primary">Ver Portfólio</a>
+        <a href="#contato" class="btn-secondary">Solicitar Orçamento</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sobre mim -->
+  <section id="sobre">
+    <div class="about-grid">
+      <div class="about-img">
+        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80" alt="Vitória Sampaio Arquiteta">
+      </div>
+      <div class="about-text">
+        <div class="section-title" style="text-align: left; margin-bottom: 1.5rem;">
+          <p>Conheça o escritório</p>
+          <h2>Design autoral e foco nos mínimos detalhes</h2>
+        </div>
+        <p>Acreditamos que a arquitetura vai além da estética: trata-se de criar ambientes que promovam bem-estar, praticidade e acolhimento.</p>
+        <p>Com anos de dedicação a projetos de alto padrão, nosso compromisso é traduzir o estilo de vida de cada cliente em formas, texturas e soluções inteligentes.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projetos -->
+  <section id="projetos">
+    <div class="section-title">
+      <p>Portfólio em Destaque</p>
+      <h2>Projetos Recentes</h2>
+    </div>
+
+    <!-- Filtros de Categorias -->
+    <div class="portfolio-filter">
+      <button class="filter-btn active" onclick="filterProjects('todos')">Todos</button>
+      <button class="filter-btn" onclick="filterProjects('residencial')">Residencial</button>
+      <button class="filter-btn" onclick="filterProjects('comercial')">Comercial</button>
+      <button class="filter-btn" onclick="filterProjects('interiores')">Interiores</button>
+    </div>
+
+    <div class="portfolio-grid">
+      <div class="project-card" data-category="residencial" onclick="openModal('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80')">
+        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80" alt="Residência Alphaville">
+        <div class="project-overlay">
+          <h3>Residência Alphaville</h3>
+          <p>Residencial • 450m²</p>
         </div>
       </div>
-    </section>
 
-    <section class="section about" id="sobre" aria-labelledby="sobre-titulo"></section>
-    <section class="section services" id="servicos" aria-labelledby="servicos-titulo"></section>
-    <section class="section projects" id="projetos" aria-labelledby="projetos-titulo"></section>
-    <section class="section process" id="processo" aria-labelledby="processo-titulo"></section>
-    <section class="section compare" id="antes-depois" aria-labelledby="ad-titulo" hidden></section>
-    <section class="section reviews" id="depoimentos" aria-labelledby="dep-titulo" hidden></section>
-    <section class="section faq" id="duvidas" aria-labelledby="faq-titulo"></section>
-    <section class="section contact" id="contato" aria-labelledby="contato-titulo"></section>
-  </main>
+      <div class="project-card" data-category="interiores" onclick="openModal('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=80')">
+        <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80" alt="Apartamento Jardins">
+        <div class="project-overlay">
+          <h3>Apartamento Jardins</h3>
+          <p>Interiores • 180m²</p>
+        </div>
+      </div>
 
-  <footer class="footer" data-footer></footer>
+      <div class="project-card" data-category="comercial" onclick="openModal('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80')">
+        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80" alt="Escritório Corporate">
+        <div class="project-overlay">
+          <h3>Escritório Corporate</h3>
+          <p>Comercial • 250m²</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <a class="float-cta" data-cta data-float href="#contato" aria-label="Solicitar orçamento">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H8l-4 4z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-    <span>Orçamento</span>
+  <!-- Contato -->
+  <section id="contato">
+    <div class="section-title">
+      <p>Vamos conversar?</p>
+      <h2>Inicie Seu Projeto</h2>
+    </div>
+
+    <div class="contact-container">
+      <div class="contact-info">
+        <h3>Entre em contato</h3>
+        <p>Preencha o formulário ou envie uma mensagem direta no WhatsApp para agendarmos uma reunião presencial ou online.</p>
+        <div class="info-item">📍 São Paulo - SP / Atendimento Brasil</div>
+        <div class="info-item">✉️ contato@vitoriasampaioarq.com.br</div>
+        <div class="info-item">📱 (11) 99999-9999</div>
+      </div>
+
+      <div class="contact-form">
+        <form onsubmit="handleSubmit(event)">
+          <div class="form-group">
+            <input type="text" placeholder="Seu nome completo" required>
+          </div>
+          <div class="form-group">
+            <input type="email" placeholder="Seu e-mail" required>
+          </div>
+          <div class="form-group">
+            <input type="tel" placeholder="Seu WhatsApp">
+          </div>
+          <div class="form-group">
+            <textarea rows="4" placeholder="Fale brevemente sobre o seu projeto..." required></textarea>
+          </div>
+          <button type="submit" class="btn-primary" style="width: 100%;">Enviar Mensagem</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal Ampliação Imagem -->
+  <div id="imageModal" class="modal" onclick="closeModal()">
+    <span class="modal-close">&times;</span>
+    <img id="modalImg" class="modal-content" src="" alt="Projeto Ampliado">
+  </div>
+
+  <!-- Botão Flutuante WhatsApp -->
+  <a href="https://wa.me/5511999999999?text=Olá,%20gostaria%20de%20solicitar%20um%20orçamento%20de%20projeto." target="_blank" class="whatsapp-btn" aria-label="Contato via WhatsApp">
+    💬
   </a>
 
-  <dialog class="lightbox" aria-label="Visualização ampliada">
-    <div class="lightbox__stage" data-lb-stage></div>
-    <p class="lightbox__caption" data-lb-caption aria-live="polite"></p>
-    <button class="lightbox__btn lightbox__close" type="button" data-lb-close aria-label="Fechar">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.6"/></svg>
-    </button>
-    <button class="lightbox__btn lightbox__prev" type="button" data-lb-prev aria-label="Imagem anterior">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
-    </button>
-    <button class="lightbox__btn lightbox__next" type="button" data-lb-next aria-label="Próxima imagem">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
-    </button>
-  </dialog>
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 Vitória Sampaio Arquitetura & Interiores. Todos os direitos reservados.</p>
+  </footer>
 
-  <noscript><p class="noscript">Para ver o site completo, ative o JavaScript. Contato: <a href="https://www.instagram.com/vitoriasampaio_arq/">@vitoriasampaio_arq</a></p></noscript>
+  <!-- Scripts -->
+  <script>
+    // Filtro de Projetos
+    function filterProjects(category) {
+      const cards = document.querySelectorAll('.project-card');
+      const buttons = document.querySelectorAll('.filter-btn');
+
+      buttons.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      cards.forEach(card => {
+        if (category === 'todos' || card.dataset.category === category) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Modal de Imagem
+    function openModal(imgSrc) {
+      const modal = document.getElementById('imageModal');
+      const modalImg = document.getElementById('modalImg');
+      modal.classList.add('active');
+      modalImg.src = imgSrc;
+    }
+
+    function closeModal() {
+      document.getElementById('imageModal').classList.remove('active');
+    }
+
+    // Fecha a ampliação com a tecla Esc
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    // Envio do Formulário
+    function handleSubmit(e) {
+      e.preventDefault();
+      alert('Obrigado pelo contato! Sua mensagem foi enviada com sucesso.');
+      e.target.reset();
+    }
+  </script>
 </body>
 </html>
