@@ -1,139 +1,93 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Vitória Sampaio Arquitetura | Projetos de arquitetura e interiores</title>
+  <meta name="description" content="Vitória Sampaio Arquitetura: projetos de arquitetura e interiores desenvolvidos com escuta, cuidado técnico e atenção aos detalhes. Solicite seu orçamento.">
+  <meta name="theme-color" content="#1d1c1a">
+  <link rel="canonical" href="./">
 
-  <!-- SEO e Redes Sociais -->
-  <title>Vitória Sampaio | Arquitetura & Interiores</title>
-  <meta name="description" content="Projetos arquitetônicos e de interiores focados em sofisticação, funcionalidade e elegância. Solicite seu orçamento.">
-  <meta name="keywords" content="arquitetura, interiores, projetos arquitetonicos, design de interiores, vitoria sampaio">
-  <link rel="canonical" href="https://lzzamboniofc.github.io/VitoriaSampaioArq/">
-
-  <!-- Open Graph / Meta Tags -->
-  <meta property="og:title" content="Vitória Sampaio | Arquitetura & Interiores">
-  <meta property="og:description" content="Transformando espaços em experiências únicas. Conheça nosso portfólio.">
-  <meta property="og:image" content="https://lzzamboniofc.github.io/VitoriaSampaioArq/assets/img/og-image.png">
-  <meta property="og:url" content="https://lzzamboniofc.github.io/VitoriaSampaioArq/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Vitória Sampaio Arquitetura">
+  <meta property="og:title" content="Vitória Sampaio Arquitetura">
+  <meta property="og:description" content="Projetos de arquitetura e interiores pensados a partir de quem vai habitar cada espaço.">
+  <meta property="og:image" content="assets/img/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
 
-  <!-- Favicon -->
-  <link href="assets/img/favicon.svg" rel="icon" type="image/svg+xml">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 
-  <!-- Fontes Google -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap">
   <link rel="stylesheet" href="css/styles.css">
   <script type="module" src="js/main.js"></script>
 </head>
 <body>
+  <a class="skip" href="#conteudo">Pular para o conteúdo</a>
 
-  <!-- Header -->
-  <header>
-    <div class="nav-container">
-      <a href="#inicio" class="logo" data-logo></a>
-      <nav aria-label="Menu principal">
-        <ul class="nav-links" data-menu></ul>
+  <header class="header" id="topo">
+    <div class="header__inner wrap">
+      <a class="brand" href="#inicio" aria-label="Início" data-brand></a>
+      <nav class="nav" id="menu" aria-label="Menu principal">
+        <ul class="nav__list" data-nav></ul>
+        <a class="btn btn--solid nav__cta" data-cta href="#contato">Solicitar orçamento</a>
       </nav>
-      <a href="#contato" class="btn-header" data-btn-header></a>
+      <a class="btn btn--line header__cta" data-cta href="#contato">Solicitar orçamento</a>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">
+        <span class="sr-only">Abrir menu</span>
+        <span class="menu-btn__bars" aria-hidden="true"></span>
+      </button>
     </div>
   </header>
 
-  <main>
-    <!-- Hero -->
-    <section id="inicio" class="hero" data-hero>
-      <div class="hero-content">
-        <h1 data-hero-titulo></h1>
-        <p data-hero-texto></p>
-        <div class="hero-buttons">
-          <a href="#projetos" class="btn-primary" data-hero-btn1></a>
-          <a href="#contato" class="btn-secondary" data-hero-btn2></a>
+  <main id="conteudo">
+    <section class="hero" id="inicio" aria-labelledby="hero-titulo">
+      <div class="hero__media" data-hero-media></div>
+      <div class="hero__content wrap">
+        <p class="eyebrow eyebrow--light" data-hero-eyebrow></p>
+        <h1 class="hero__title" id="hero-titulo" data-hero-title></h1>
+        <p class="hero__text" data-hero-text></p>
+        <div class="hero__actions">
+          <a class="btn btn--accent" data-cta href="#contato">Solicitar orçamento</a>
+          <a class="btn btn--ghost-light" href="#projetos">Ver projetos</a>
         </div>
       </div>
     </section>
 
-    <!-- Sobre -->
-    <section id="sobre" aria-labelledby="sobre-titulo">
-      <div class="about-grid">
-        <div class="about-img" data-sobre-img></div>
-        <div class="about-text">
-          <div class="section-title" style="text-align: left; margin-bottom: 1.5rem;">
-            <p data-sobre-sobretitulo></p>
-            <h2 id="sobre-titulo" data-sobre-titulo></h2>
-          </div>
-          <div data-sobre-paragrafos></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Projetos -->
-    <section id="projetos" aria-labelledby="projetos-titulo">
-      <div class="section-title">
-        <p data-projetos-sobretitulo></p>
-        <h2 id="projetos-titulo" data-projetos-titulo></h2>
-      </div>
-      <div class="portfolio-filter" role="group" aria-label="Filtrar projetos" data-filtros></div>
-      <div class="portfolio-grid" data-projetos></div>
-    </section>
-
-    <!-- Contato -->
-    <section id="contato" aria-labelledby="contato-titulo">
-      <div class="section-title">
-        <p data-contato-sobretitulo></p>
-        <h2 id="contato-titulo" data-contato-titulo></h2>
-      </div>
-
-      <div class="contact-container">
-        <div class="contact-info">
-          <h3 data-contato-subtitulo></h3>
-          <p data-contato-texto></p>
-          <div data-contato-itens></div>
-        </div>
-
-        <div class="contact-form">
-          <form data-form novalidate>
-            <div class="form-group">
-              <label class="sr-only" for="f-nome">Nome completo</label>
-              <input id="f-nome" name="nome" type="text" placeholder="Seu nome completo" autocomplete="name" required>
-            </div>
-            <div class="form-group">
-              <label class="sr-only" for="f-email">E-mail</label>
-              <input id="f-email" name="email" type="email" placeholder="Seu e-mail" autocomplete="email" required>
-            </div>
-            <div class="form-group">
-              <label class="sr-only" for="f-tel">WhatsApp</label>
-              <input id="f-tel" name="telefone" type="tel" placeholder="Seu WhatsApp" autocomplete="tel">
-            </div>
-            <div class="form-group">
-              <label class="sr-only" for="f-msg">Sobre o projeto</label>
-              <textarea id="f-msg" name="mensagem" rows="4" placeholder="Fale brevemente sobre o seu projeto..." required></textarea>
-            </div>
-            <p class="form-note">Ao enviar, sua mensagem abre no WhatsApp, pronta para ser enviada.</p>
-            <button type="submit" class="btn-primary" style="width: 100%;" data-form-btn></button>
-          </form>
-        </div>
-      </div>
-    </section>
+    <section class="section about" id="sobre" aria-labelledby="sobre-titulo"></section>
+    <section class="section services" id="servicos" aria-labelledby="servicos-titulo"></section>
+    <section class="section projects" id="projetos" aria-labelledby="projetos-titulo"></section>
+    <section class="section process" id="processo" aria-labelledby="processo-titulo"></section>
+    <section class="section compare" id="antes-depois" aria-labelledby="ad-titulo" hidden></section>
+    <section class="section reviews" id="depoimentos" aria-labelledby="dep-titulo" hidden></section>
+    <section class="section faq" id="duvidas" aria-labelledby="faq-titulo"></section>
+    <section class="section contact" id="contato" aria-labelledby="contato-titulo"></section>
   </main>
 
-  <!-- Ampliação de imagem -->
-  <div id="imageModal" class="modal" role="dialog" aria-modal="true" aria-label="Projeto ampliado" data-modal>
-    <button type="button" class="modal-close" aria-label="Fechar" data-modal-close>&times;</button>
-    <img id="modalImg" class="modal-content" alt="" data-modal-img>
-  </div>
+  <footer class="footer" data-footer></footer>
 
-  <!-- Botão flutuante do WhatsApp -->
-  <a href="#contato" target="_blank" rel="noopener" class="whatsapp-btn" aria-label="Contato via WhatsApp" data-whatsapp-btn>
-    <svg viewBox="0 0 32 32" aria-hidden="true" fill="currentColor"><path d="M16 3C9 3 3.3 8.6 3.3 15.6c0 2.2.6 4.4 1.7 6.3L3 29l7.3-1.9a12.7 12.7 0 0 0 5.7 1.4h.1c7 0 12.7-5.7 12.7-12.6C28.8 8.6 23 3 16 3Zm0 23.2c-1.9 0-3.8-.5-5.4-1.5l-.4-.2-4.3 1.1 1.2-4.2-.3-.4a10.4 10.4 0 0 1-1.6-5.6C5.2 9.8 10 5.1 16 5.1s10.7 4.7 10.7 10.5S22 26.2 16 26.2Zm5.8-7.8c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.6 8.6 0 0 1-4.3-3.7c-.3-.5.3-.5.9-1.6.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5 1.9.8 2.6.9 3.6.7.6-.1 1.9-.8 2.1-1.5.3-.7.3-1.3.2-1.5l-.4-.3Z"/></svg>
+  <a class="float-cta" data-cta data-float href="#contato" aria-label="Solicitar orçamento">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H8l-4 4z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+    <span>Orçamento</span>
   </a>
 
-  <!-- Footer -->
-  <footer data-rodape></footer>
+  <dialog class="lightbox" aria-label="Visualização ampliada">
+    <div class="lightbox__stage" data-lb-stage></div>
+    <p class="lightbox__caption" data-lb-caption aria-live="polite"></p>
+    <button class="lightbox__btn lightbox__close" type="button" data-lb-close aria-label="Fechar">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.6"/></svg>
+    </button>
+    <button class="lightbox__btn lightbox__prev" type="button" data-lb-prev aria-label="Imagem anterior">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+    </button>
+    <button class="lightbox__btn lightbox__next" type="button" data-lb-next aria-label="Próxima imagem">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+    </button>
+  </dialog>
 
-  <noscript><p style="padding:6rem 2rem;text-align:center">Ative o JavaScript para ver o site completo. Instagram: <a href="https://www.instagram.com/vitoriasampaio_arq/">@vitoriasampaio_arq</a></p></noscript>
+  <noscript><p class="noscript">Para ver o site completo, ative o JavaScript. Contato: <a href="https://www.instagram.com/vitoriasampaio_arq/">@vitoriasampaio_arq</a></p></noscript>
 </body>
 </html>
