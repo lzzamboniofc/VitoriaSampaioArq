@@ -119,7 +119,15 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .brand { display: inline-flex; flex-direction: column; text-decoration: none; line-height: 1; margin-right: auto; position: relative; z-index: 2; }
 .brand__name { font-family: var(--serif); font-size: 1.55rem; letter-spacing: -.005em; }
 .brand__sub { margin-top: 4px; font-size: .58rem; font-weight: 600; letter-spacing: .38em; text-transform: uppercase; opacity: .8; }
-.brand img { height: 40px; width: auto; }
+.brand__img { height: 56px; width: auto; display: block; transition: opacity .35s var(--ease); }
+.brand__img--escuro { position: absolute; left: 0; top: 0; opacity: 0; }
+.header.is-solid .brand__img--claro { opacity: 0; }
+.header.is-solid .brand__img--escuro { opacity: 1; }
+.menu-open .header .brand__img--claro { opacity: 1; }
+.menu-open .header .brand__img--escuro { opacity: 0; }
+@media (min-width: 1024px) { .brand__img { height: 70px; } }
+.brand--footer .brand__img { height: 128px; }
+.brand--footer .brand__img--escuro { display: none; }
 
 .menu-btn { position: relative; z-index: 2; width: 48px; height: 48px; display: grid; place-items: center; margin-right: -12px; }
 .menu-btn__bars, .menu-btn__bars::before, .menu-btn__bars::after { display: block; width: 24px; height: 1.5px; background: currentColor; transition: transform .35s var(--ease), opacity .2s; }

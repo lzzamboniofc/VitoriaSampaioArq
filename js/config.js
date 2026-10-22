@@ -18,9 +18,9 @@ export const site = {
 
   marca: {
     nome: 'Vitória Sampaio',
-    complemento: 'Arquitetura',
-    logo: '',        // ex.: 'assets/img/logo.svg' (versão clara para fundo escuro)
-    logoEscuro: '',  // ex.: 'assets/img/logo-escuro.svg'
+    complemento: 'Arquitetura & Construção',
+    logo: 'assets/img/logo-claro.webp',        // versão clara, para fundos escuros
+    logoEscuro: 'assets/img/logo-escuro.webp', // versão escura, para fundos claros
     descricao:
       'Projetos de arquitetura e interiores desenvolvidos com escuta, cuidado técnico e atenção a cada detalhe.',
   },
@@ -49,7 +49,7 @@ export const site = {
   },
 
   hero: {
-    sobretitulo: 'Arquitetura & Interiores',
+    sobretitulo: 'Arquitetura & Construção',
     titulo: 'Arquitetura feita para ser vivida.',
     texto:
       'Projetos de arquitetura e interiores pensados a partir de quem vai habitar cada espaço.',

@@ -34,10 +34,16 @@ const sectionHead = (id, eyebrow, title, text = '', extra = '') => `
   </header>`;
 
 /* ---------- marca ---------- */
-function brandMarkup(dark = false) {
-  const logo = dark ? site.marca.logoEscuro || site.marca.logo : site.marca.logo;
-  if (logo) return `<img src="${esc(logo)}" alt="${esc(site.marca.nome + ' ' + site.marca.complemento)}" height="40">`;
-  return `<span class="brand__name">${esc(site.marca.nome)}</span><span class="brand__sub">${esc(site.marca.complemento)}</span>`;
+function brandMarkup() {
+  const m = site.marca;
+  const alt = `${m.nome} ${m.complemento}`;
+  if (m.logo) {
+    // versão clara (sobre fundos escuros) e escura (cabeçalho depois da rolagem)
+    return `<img class="brand__img brand__img--claro" src="${esc(m.logo)}" alt="${esc(alt)}" width="900" height="526">${
+      m.logoEscuro ? `<img class="brand__img brand__img--escuro" src="${esc(m.logoEscuro)}" alt="" aria-hidden="true" width="900" height="526">` : ''
+    }`;
+  }
+  return `<span class="brand__name">${esc(m.nome)}</span><span class="brand__sub">${esc(m.complemento)}</span>`;
 }
 
 /* ---------- render ---------- */
