@@ -38,8 +38,8 @@ export const site = {
       url: 'https://www.instagram.com/vitoriasampaio_arq/',
       direct: 'https://ig.me/m/vitoriasampaio_arq',
     },
-    whatsapp: '',  // somente números com DDI e DDD, ex.: '5511999999999'
-    telefone: '',  // ex.: '(11) 99999-9999'
+    whatsapp: '5511999849321',  // somente números com DDI e DDD, ex.: '5511999999999'
+    telefone: '(11) 99984-9321',
     email: '',
     cidadeAtuacao: '', // ex.: 'Itu e região'
     endereco: { linha: '', cidade: '', uf: '', cep: '' }, // preenchido = ativa "Como chegar"
