@@ -6,7 +6,6 @@
   "description": "Site de Vitória Sampaio Arquitetura — estático, pronto para GitHub Pages (branch main, pasta raiz).",
   "scripts": {
     "dev": "vite --open",
-    "pendencias": "node scripts/pendencias.mjs",
     "imagens": "node scripts/otimizar-imagens.mjs"
   },
   "devDependencies": {

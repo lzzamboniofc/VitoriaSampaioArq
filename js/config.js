@@ -2,38 +2,34 @@
    CONFIGURAÇÃO CENTRAL — Vitória Sampaio Arquitetura
    Edite SOMENTE este arquivo para atualizar textos, contatos e imagens.
 
-   Regras:
-   - Itens com `confirmado: false` aparecem apenas no modo demonstração,
-     com o selo "A confirmar". Com `modoDemonstracao: false`, são ocultados.
-   - Campos vazios ('') nunca são exibidos ao visitante.
-   - Imagens: coloque os arquivos em assets/img/ e informe o caminho em `src`.
-     Sem `src`, o modo demonstração mostra um espaço reservado neutro.
-   - Rode `npm run pendencias` para listar o que ainda falta preencher.
+   - Os textos e as imagens atuais são ilustrativos (fotos do Unsplash).
+     Troque pelas fotos reais dos projetos quando estiverem disponíveis:
+     coloque os arquivos em assets/img/ e informe o caminho em `src`.
+   - Campos vazios ('') não aparecem no site.
+   - Se uma imagem não carregar, o site mostra um bloco neutro no lugar.
    ========================================================================= */
 
-export const site = {
-  // true = apresentação comercial (mostra pendências sinalizadas)
-  // false = versão pública (esconde tudo que não foi confirmado)
-  modoDemonstracao: true,
+// Atalho para imagens do Unsplash (ilustrativas)
+const foto = (id, w = 1600) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=75`;
 
-  // URL final do site, com barra no final (ex.: https://usuario.github.io/repositorio/)
+export const site = {
+  // URL final do site, com barra no final
   urlSite: 'https://lzzamboniofc.github.io/VitoriaSampaioArq/',
 
   marca: {
     nome: 'Vitória Sampaio',
     complemento: 'Arquitetura',
-    nomeConfirmado: false, // derivado do @vitoriasampaio_arq — confirmar grafia oficial
-    logo: '',              // ex.: 'assets/img/logo.svg' (versão clara para fundo escuro)
-    logoEscuro: '',        // ex.: 'assets/img/logo-escuro.svg' (para fundo claro)
+    logo: '',        // ex.: 'assets/img/logo.svg' (versão clara para fundo escuro)
+    logoEscuro: '',  // ex.: 'assets/img/logo-escuro.svg'
     descricao:
       'Projetos de arquitetura e interiores desenvolvidos com escuta, cuidado técnico e atenção a cada detalhe.',
   },
 
   // Canal principal dos botões "Solicitar orçamento".
-  // Vazio = usa o Direct do Instagram (canal oficial conhecido).
+  // Vazio = usa o WhatsApp (se preenchido) ou o Direct do Instagram.
   atendimento: {
     rotulo: 'Solicitar orçamento',
-    url: '', // ex.: 'https://wa.me/5511999999999?text=Olá!%20Gostaria%20de%20um%20orçamento'
+    url: '',
   },
 
   contato: {
@@ -43,21 +39,13 @@ export const site = {
       direct: 'https://ig.me/m/vitoriasampaio_arq',
     },
     whatsapp: '',  // somente números com DDI e DDD, ex.: '5511999999999'
-    telefone: '',  // como deve aparecer, ex.: '(11) 99999-9999'
+    telefone: '',  // ex.: '(11) 99999-9999'
     email: '',
-    cidadeAtuacao: '', // ex.: 'Itu e região' — usado em textos e SEO
-    endereco: {
-      linha: '',   // ex.: 'Rua Exemplo, 123 — Centro'
-      cidade: '',
-      uf: '',
-      cep: '',
-      confirmado: false, // mapa e "Como chegar" só aparecem com true
-    },
-    mapaEmbed: '', // URL de incorporação do Google Maps (src do iframe)
-    horarios: [
-      // { dias: 'Segunda a sexta', horas: '9h às 18h' }
-    ],
-    atendimentoObs: '', // ex.: 'Atendimento com hora marcada'
+    cidadeAtuacao: '', // ex.: 'Itu e região'
+    endereco: { linha: '', cidade: '', uf: '', cep: '' }, // preenchido = ativa "Como chegar"
+    mapaEmbed: '', // URL de incorporação do Google Maps
+    horarios: [],  // ex.: [{ dias: 'Segunda a sexta', horas: '9h às 18h' }]
+    atendimentoObs: 'Atendimento com hora marcada, presencial ou on-line.',
   },
 
   hero: {
@@ -65,80 +53,97 @@ export const site = {
     titulo: 'Arquitetura feita para ser vivida.',
     texto:
       'Projetos de arquitetura e interiores pensados a partir de quem vai habitar cada espaço.',
-    imagem: { src: '', alt: 'Ambiente projetado por Vitória Sampaio Arquitetura', placeholder: 'Foto principal de um projeto' },
+    imagem: { src: foto('1600210492486-724fe5c67fb0', 2200), alt: 'Sala de estar clara com móveis em tons neutros' },
   },
 
   sobre: {
     titulo: 'Cada projeto começa por uma boa escuta.',
     paragrafos: [
       'Entender a rotina, os desejos e a forma como cada pessoa ocupa um espaço é o ponto de partida. A partir disso, o projeto ganha forma com equilíbrio entre estética, função e viabilidade.',
+      'Do primeiro croqui à escolha do último acabamento, cada decisão é tomada em conjunto, com clareza sobre prazos, custos e possibilidades.',
       'O resultado são ambientes com identidade, pensados para durar e para serem vividos todos os dias.',
     ],
-    // Destaques reais do atendimento (deixe vazio até confirmar)
     destaques: [
-      // { titulo: 'Atendimento personalizado', texto: '...' }
+      { titulo: 'Projeto sob medida', texto: 'Soluções desenhadas para a rotina e o estilo de cada cliente, sem fórmulas prontas.' },
+      { titulo: 'Acompanhamento próximo', texto: 'Contato direto com a arquiteta em todas as etapas do projeto.' },
+      { titulo: 'Atendimento on-line', texto: 'Reuniões e apresentações também a distância, para quem está em outra cidade.' },
     ],
     assinatura: 'Vitória Sampaio',
     registro: '', // ex.: 'Arquiteta e Urbanista — CAU A000000-0'
     imagens: [
-      { src: '', alt: 'Retrato da arquiteta Vitória Sampaio', placeholder: 'Retrato da arquiteta' },
-      { src: '', alt: 'Detalhe de projeto', placeholder: 'Detalhe de projeto' },
+      { src: foto('1586023492125-27b2c045efd7', 1200), alt: 'Ambiente de estar com poltrona e iluminação natural' },
+      { src: foto('1616486338812-3dadae4b4ace', 800), alt: 'Detalhe de decoração em tons claros' },
     ],
   },
 
-  // Serviços — confirmar no Instagram antes de publicar
   servicos: [
     {
       nome: 'Projeto arquitetônico',
-      descricao: 'Do estudo inicial ao projeto completo para construção, com soluções pensadas para o terreno e para quem vai morar.',
-      confirmado: false,
+      descricao: 'Do estudo inicial ao projeto completo para construção, com soluções pensadas para o terreno, o clima e para quem vai morar.',
     },
     {
       nome: 'Projeto de interiores',
-      descricao: 'Layout, materiais, marcenaria e iluminação definidos em conjunto para criar ambientes coerentes e funcionais.',
-      confirmado: false,
+      descricao: 'Layout, materiais, marcenaria e iluminação definidos em conjunto para criar ambientes coerentes, funcionais e acolhedores.',
     },
     {
       nome: 'Reforma',
-      descricao: 'Reorganização de espaços existentes, com atenção às possibilidades técnicas e ao orçamento disponível.',
-      confirmado: false,
+      descricao: 'Reorganização de espaços existentes, com atenção às possibilidades técnicas, ao cronograma e ao orçamento disponível.',
     },
     {
       nome: 'Consultoria',
-      descricao: 'Orientação pontual para decisões de layout, revestimentos, cores e mobiliário.',
-      confirmado: false,
+      descricao: 'Orientação pontual para decisões de layout, revestimentos, cores e mobiliário, ideal para quem quer começar com segurança.',
     },
   ],
 
-  // Portfólio — adicione projetos reais com suas fotos
   projetos: [
-    { titulo: 'Projeto 01', tipo: '', local: '', ano: '', confirmado: false, imagens: [{ src: '', alt: 'Projeto 01 — ambiente', placeholder: 'Projeto 01' }, { src: '', alt: 'Projeto 01 — detalhe', placeholder: 'Projeto 01 · detalhe' }] },
-    { titulo: 'Projeto 02', tipo: '', local: '', ano: '', confirmado: false, imagens: [{ src: '', alt: 'Projeto 02', placeholder: 'Projeto 02' }] },
-    { titulo: 'Projeto 03', tipo: '', local: '', ano: '', confirmado: false, imagens: [{ src: '', alt: 'Projeto 03', placeholder: 'Projeto 03' }] },
-    { titulo: 'Projeto 04', tipo: '', local: '', ano: '', confirmado: false, imagens: [{ src: '', alt: 'Projeto 04', placeholder: 'Projeto 04' }] },
-    { titulo: 'Projeto 05', tipo: '', local: '', ano: '', confirmado: false, imagens: [{ src: '', alt: 'Projeto 05', placeholder: 'Projeto 05' }] },
+    {
+      titulo: 'Casa Jardim', tipo: 'Residencial · Arquitetura', local: '', ano: '',
+      imagens: [
+        { src: foto('1600585154340-be6161a56a0c'), alt: 'Fachada de casa contemporânea com grandes aberturas de vidro' },
+        { src: foto('1600607687939-ce8a6c25118c'), alt: 'Sala integrada da Casa Jardim' },
+      ],
+    },
+    {
+      titulo: 'Apartamento Linho', tipo: 'Residencial · Interiores', local: '', ano: '',
+      imagens: [{ src: foto('1618221195710-dd6b41faaea6', 1200), alt: 'Sala de estar com sofá claro e quadros' }],
+    },
+    {
+      titulo: 'Cozinha Aberta', tipo: 'Reforma', local: '', ano: '',
+      imagens: [{ src: foto('1556909114-f6e7ad7d3136', 1200), alt: 'Cozinha integrada com bancada e marcenaria clara' }],
+    },
+    {
+      titulo: 'Suíte Serena', tipo: 'Interiores', local: '', ano: '',
+      imagens: [{ src: foto('1505693416388-ac5ce068fe85', 1200), alt: 'Quarto com roupa de cama clara e luz natural' }],
+    },
+    {
+      titulo: 'Residência Horizonte', tipo: 'Residencial · Arquitetura e interiores', local: '', ano: '',
+      imagens: [
+        { src: foto('1600047509807-ba8f99d2cdde', 2200), alt: 'Casa moderna com área externa e piscina' },
+        { src: foto('1600566753190-17f0baa2a6c3'), alt: 'Ambiente interno da Residência Horizonte' },
+      ],
+    },
   ],
 
   processo: {
     titulo: 'Como o projeto acontece',
     texto: 'Um caminho claro, com decisões tomadas em conjunto em cada etapa.',
-    imagem: { src: '', alt: 'Estudo de projeto sobre a mesa', placeholder: 'Foto de estudo / croqui' },
+    imagem: { src: foto('1503387762-592deb58ef4e', 1200), alt: 'Plantas de arquitetura e instrumentos de desenho sobre a mesa' },
     etapas: [
-      { titulo: 'Conversa inicial', texto: 'Entendimento das necessidades, do espaço e das expectativas.', confirmado: false },
-      { titulo: 'Estudo preliminar', texto: 'Primeiras propostas de layout e linguagem visual para validação.', confirmado: false },
-      { titulo: 'Desenvolvimento', texto: 'Detalhamento técnico, materiais, marcenaria e iluminação.', confirmado: false },
-      { titulo: 'Entrega', texto: 'Projeto finalizado para execução, com orientações para a obra.', confirmado: false },
+      { titulo: 'Conversa inicial', texto: 'Entendimento das necessidades, do espaço, do orçamento e das expectativas.' },
+      { titulo: 'Estudo preliminar', texto: 'Primeiras propostas de layout e linguagem visual, apresentadas para validação.' },
+      { titulo: 'Desenvolvimento', texto: 'Detalhamento técnico, escolha de materiais, marcenaria e iluminação.' },
+      { titulo: 'Entrega', texto: 'Projeto finalizado para execução, com orientações claras para a obra.' },
     ],
   },
 
-  // Antes e depois — somente fotos reais, mesmo enquadramento.
-  // Seção fica oculta enquanto vazia (inclusive no modo demonstração).
+  // Antes e depois — use apenas fotos reais do mesmo ambiente, mesmo enquadramento.
+  // A seção fica oculta enquanto a lista estiver vazia.
   antesDepois: [
     // { titulo: 'Reforma de sala', antes: { src: 'assets/img/sala-antes.webp', alt: '...' }, depois: { src: 'assets/img/sala-depois.webp', alt: '...' } }
   ],
 
-  // Depoimentos — somente avaliações reais e verificáveis.
-  // Seção fica oculta enquanto vazia (inclusive no modo demonstração).
+  // Depoimentos — use apenas avaliações reais de clientes.
+  // A seção fica oculta enquanto a lista estiver vazia.
   depoimentos: [
     // { nome: 'Nome como aparece publicamente', texto: '...', nota: 5, origem: 'Google' }
   ],
@@ -146,14 +151,28 @@ export const site = {
   faq: [
     {
       pergunta: 'Como solicito um orçamento?',
-      resposta: 'Envie uma mensagem pelo Instagram @vitoriasampaio_arq contando um pouco sobre o seu espaço e o que você precisa.',
-      confirmado: true,
+      resposta: 'Envie uma mensagem pelo Instagram @vitoriasampaio_arq contando um pouco sobre o seu espaço, o que você deseja e o prazo que tem em mente. A partir disso, agendamos uma conversa inicial.',
     },
-    { pergunta: 'Quais serviços são oferecidos?', resposta: 'Resposta a confirmar com a arquiteta.', confirmado: false },
-    { pergunta: 'Atende em quais cidades?', resposta: 'Resposta a confirmar com a arquiteta.', confirmado: false },
-    { pergunta: 'É possível fazer o projeto a distância?', resposta: 'Resposta a confirmar com a arquiteta.', confirmado: false },
-    { pergunta: 'Quanto tempo leva um projeto?', resposta: 'Resposta a confirmar com a arquiteta.', confirmado: false },
-    { pergunta: 'Como é definido o valor do projeto?', resposta: 'Resposta a confirmar com a arquiteta.', confirmado: false },
+    {
+      pergunta: 'Quais serviços são oferecidos?',
+      resposta: 'Projeto arquitetônico, projeto de interiores, reformas e consultorias pontuais. Cada proposta é ajustada ao tamanho e ao momento do seu projeto.',
+    },
+    {
+      pergunta: 'É possível fazer o projeto a distância?',
+      resposta: 'Sim. Reuniões, apresentações e ajustes podem ser feitos on-line, com o mesmo cuidado do atendimento presencial.',
+    },
+    {
+      pergunta: 'Quanto tempo leva um projeto?',
+      resposta: 'Depende do tamanho e da complexidade do espaço. Na conversa inicial, apresentamos um cronograma estimado para cada etapa.',
+    },
+    {
+      pergunta: 'Como é definido o valor do projeto?',
+      resposta: 'O valor considera a área, o tipo de serviço e o nível de detalhamento necessário. Após entender sua necessidade, enviamos uma proposta detalhada.',
+    },
+    {
+      pergunta: 'A arquiteta acompanha a obra?',
+      resposta: 'O acompanhamento pode ser incluído na proposta, com visitas periódicas para garantir que a execução siga o projeto.',
+    },
   ],
 
   rodape: {

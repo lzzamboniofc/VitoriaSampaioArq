@@ -6,10 +6,10 @@ Site estático, mobile-first, pronto para **GitHub Pages (branch `main`, pasta `
 
 Tudo fica em **`js/config.js`**: nome, contatos, textos, serviços, projetos, processo, FAQ, depoimentos e fotos.
 
-- `modoDemonstracao: true` → apresentação comercial: mostra itens não confirmados com o selo **“A confirmar”** e espaços reservados para fotos.
-- `modoDemonstracao: false` → versão pública: oculta tudo que tiver `confirmado: false` ou estiver sem foto.
+- Os textos e as fotos atuais são **ilustrativos** (fotos do Unsplash). Troque pelas fotos reais dos projetos em `assets/img/` e atualize o `src` de cada imagem.
+- Campos vazios não aparecem no site. Se uma imagem não carregar, aparece um bloco neutro no lugar.
 - Seções **Antes e depois** e **Depoimentos** só aparecem quando houver conteúdo real. O menu se ajusta sozinho.
-- Mapa e botão “Como chegar” só aparecem com `endereco.confirmado: true`.
+- Mapa e botão “Como chegar” aparecem quando o endereço é preenchido.
 - Botões de orçamento usam `atendimento.url` → senão WhatsApp → senão Direct do Instagram.
 
 ## Comandos (Node.js)
@@ -17,7 +17,6 @@ Tudo fica em **`js/config.js`**: nome, contatos, textos, serviços, projetos, pr
 ```bash
 npm install
 npm run dev          # servidor local com recarga
-npm run pendencias   # lista tudo que falta confirmar/preencher
 npm run imagens      # converte fotos de assets/originais/ em WebP em assets/img/
 ```
 
@@ -25,7 +24,6 @@ npm run imagens      # converte fotos de assets/originais/ em WebP em assets/img
 
 1. Envie esta pasta para a raiz da branch `main` do repositório.
 2. Settings → Pages → Source: *Deploy from a branch* → `main` / `(root)`.
-3. Preencha `urlSite` no config, atualize `sitemap.xml` e descomente a linha do sitemap em `robots.txt`.
 
 Todos os caminhos são relativos, então o site funciona em `usuario.github.io/repositorio/`. O arquivo `.nojekyll` evita processamento do Jekyll.
 
@@ -43,5 +41,5 @@ css/styles.css        estilos e tokens de cor
 js/config.js          ← conteúdo editável
 js/main.js            renderização e interações (menu, lightbox, FAQ, comparador)
 assets/img/           imagens, favicon, imagem de compartilhamento
-scripts/              utilitários Node (pendências e otimização de imagens)
+scripts/              utilitário Node de otimização de imagens
 ```

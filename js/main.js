@@ -5,13 +5,9 @@ const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const esc = (v) =>
   String(v ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-const demo = !!site.modoDemonstracao;
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-const ok = (item) => item && (item.confirmado || demo);
-const pend = (item) => (demo && item && !item.confirmado ? '<span class="pending">A confirmar</span>' : '');
 const temImg = (im) => im && im.src;
-const imgOk = (im) => temImg(im) || demo;
 
 const c = site.contato;
 const whatsUrl = c.whatsapp ? `https://wa.me/${c.whatsapp.replace(/\D/g, '')}` : '';
@@ -26,9 +22,7 @@ function media(im, cls = '', { eager = false, sizes = '100vw' } = {}) {
       eager ? 'fetchpriority="high"' : 'loading="lazy"'
     } decoding="async">`;
   }
-  return `<div class="ph ${cls}" role="img" aria-label="${esc(im?.alt || 'Imagem a substituir')}">${
-    demo ? `<span class="ph__label">${esc(im?.placeholder || 'Foto a substituir')}</span>` : ''
-  }</div>`;
+  return `<div class="ph ${cls}" role="img" aria-label="${esc(im?.alt || '')}"></div>`;
 }
 
 const sectionHead = (id, eyebrow, title, text = '', extra = '') => `
@@ -57,7 +51,7 @@ function renderHero() {
 
 function renderAbout() {
   const s = site.sobre;
-  const imgs = s.imagens.filter(imgOk);
+  const imgs = s.imagens.filter(temImg);
   const destaques = s.destaques.filter(Boolean);
   $('#sobre').innerHTML = `
     <div class="wrap about__grid">
@@ -81,7 +75,7 @@ function renderAbout() {
 }
 
 function renderServices() {
-  const list = site.servicos.filter(ok);
+  const list = site.servicos;
   if (!list.length) return hide('#servicos');
   $('#servicos').innerHTML = `
     <div class="wrap">
@@ -92,7 +86,7 @@ function renderServices() {
             (s) => `
           <li class="svc__item reveal">
             <div class="svc__body">
-              <h3 class="svc__name">${esc(s.nome)} ${pend(s)}</h3>
+              <h3 class="svc__name">${esc(s.nome)}</h3>
               <p class="svc__desc">${esc(s.descricao)}</p>
               ${s.preco || s.prazo ? `<p class="svc__meta">${[s.preco, s.prazo].filter(Boolean).map(esc).join(' · ')}</p>` : ''}
             </div>
@@ -110,8 +104,8 @@ function renderServices() {
 let projetosVisiveis = [];
 function renderProjects() {
   projetosVisiveis = site.projetos
-    .filter(ok)
-    .map((p) => ({ ...p, imagens: p.imagens.filter(imgOk) }))
+    
+    .map((p) => ({ ...p, imagens: p.imagens.filter(temImg) }))
     .filter((p) => p.imagens.length);
   if (!projetosVisiveis.length) return hide('#projetos');
   $('#projetos').innerHTML = `
@@ -132,7 +126,7 @@ function renderProjects() {
             <button class="pf__btn" type="button" data-project="${i}" aria-label="Ampliar ${esc(p.titulo)}${p.imagens.length > 1 ? ` (${p.imagens.length} imagens)` : ''}">
               <span class="pf__media">${media(p.imagens[0], '', { sizes: '(min-width: 960px) 50vw, 100vw' })}</span>
               <span class="pf__info">
-                <span class="pf__title">${esc(p.titulo)} ${pend(p)}</span>
+                <span class="pf__title">${esc(p.titulo)}</span>
                 ${meta ? `<span class="pf__meta">${meta}</span>` : ''}
               </span>
             </button>
@@ -145,11 +139,11 @@ function renderProjects() {
 
 function renderProcess() {
   const p = site.processo;
-  const etapas = p.etapas.filter(ok);
+  const etapas = p.etapas;
   if (!etapas.length) return hide('#processo');
   $('#processo').innerHTML = `
     <div class="wrap process__grid">
-      <div class="process__media reveal">${imgOk(p.imagem) ? media(p.imagem, '', { sizes: '(min-width: 960px) 45vw, 100vw' }) : ''}</div>
+      <div class="process__media reveal">${temImg(p.imagem) ? media(p.imagem, '', { sizes: '(min-width: 960px) 45vw, 100vw' }) : ''}</div>
       <div class="process__body">
         ${sectionHead('processo-titulo', 'Processo', p.titulo, p.texto)}
         <ol class="steps">
@@ -158,7 +152,7 @@ function renderProcess() {
               (e) => `
             <li class="steps__item reveal">
               <div>
-                <h3 class="steps__title">${esc(e.titulo)} ${pend(e)}</h3>
+                <h3 class="steps__title">${esc(e.titulo)}</h3>
                 <p>${esc(e.texto)}</p>
               </div>
             </li>`
@@ -226,7 +220,7 @@ function renderReviews() {
 }
 
 function renderFaq() {
-  const items = site.faq.filter(ok);
+  const items = site.faq;
   if (!items.length) return hide('#duvidas');
   $('#duvidas').innerHTML = `
     <div class="wrap faq__grid">
@@ -238,7 +232,7 @@ function renderFaq() {
           <div class="acc__item reveal">
             <h3 class="acc__h">
               <button class="acc__btn" type="button" aria-expanded="false" aria-controls="faq-${i}" id="faq-b-${i}">
-                <span>${esc(f.pergunta)} ${pend(f)}</span>
+                <span>${esc(f.pergunta)}</span>
                 <span class="acc__icon" aria-hidden="true"></span>
               </button>
             </h3>
@@ -266,7 +260,7 @@ function enderecoTexto() {
 
 function renderContact() {
   const e = c.endereco;
-  const endOk = e.confirmado && e.linha;
+  const endOk = !!e.linha;
   const rota = endOk ? `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(enderecoTexto())}` : '';
   const rows = [];
   if (c.whatsapp) rows.push(['WhatsApp', `<a href="${whatsUrl}" target="_blank" rel="noopener">${esc(c.telefone || c.whatsapp)}</a>`]);
@@ -278,11 +272,6 @@ function renderContact() {
   if (c.horarios.length) rows.push(['Horários', c.horarios.map((h) => `${esc(h.dias)}: ${esc(h.horas)}`).join('<br>')]);
   if (c.atendimentoObs) rows.push(['Observação', esc(c.atendimentoObs)]);
 
-  const pendentes = demo
-    ? ['WhatsApp ou telefone', 'E-mail', 'Cidade de atuação', 'Endereço e mapa', 'Horários'].filter((_, i) =>
-        [!(c.whatsapp || c.telefone), !c.email, !c.cidadeAtuacao, !endOk, !c.horarios.length][i]
-      )
-    : [];
 
   $('#contato').innerHTML = `
     <div class="wrap contact__grid">
@@ -291,7 +280,6 @@ function renderContact() {
         <dl class="contact__list reveal">
           ${rows.map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join('')}
         </dl>
-        ${pendentes.length ? `<p class="contact__pending reveal"><span class="pending">A confirmar</span> ${pendentes.join(' · ')}</p>` : ''}
         <div class="contact__actions reveal">
           <a class="btn btn--accent" href="${esc(ctaUrl)}"${ext(ctaUrl)}>${esc(ctaLabel)}</a>
           ${rota ? `<a class="btn btn--line" href="${rota}" target="_blank" rel="noopener">Como chegar</a>` : ''}
@@ -333,7 +321,7 @@ function renderFooter() {
           <li><a href="${esc(c.instagram.url)}" target="_blank" rel="noopener">Instagram @${esc(c.instagram.usuario)}</a></li>
           ${c.whatsapp ? `<li><a href="${whatsUrl}" target="_blank" rel="noopener">WhatsApp</a></li>` : ''}
           ${c.email ? `<li><a href="mailto:${esc(c.email)}">${esc(c.email)}</a></li>` : ''}
-          ${c.endereco.confirmado && c.endereco.linha ? `<li>${esc(enderecoTexto())}</li>` : ''}
+          ${c.endereco.linha ? `<li>${esc(enderecoTexto())}</li>` : ''}
         </ul>
       </div>
     </div>
@@ -495,8 +483,7 @@ function setupSeo() {
     const og = document.createElement('meta');
     og.setAttribute('property', 'og:url'); og.content = site.urlSite; document.head.append(og);
   }
-  // Dados estruturados apenas com informações confirmadas
-  if (!site.marca.nomeConfirmado) return;
+  // Dados estruturados (schema.org)
   const ld = {
     '@context': 'https://schema.org',
     '@type': 'ProfessionalService',
@@ -507,7 +494,7 @@ function setupSeo() {
   if (site.urlSite) ld.url = site.urlSite;
   if (c.telefone) ld.telephone = c.telefone;
   if (c.email) ld.email = c.email;
-  if (c.endereco.confirmado && c.endereco.linha)
+  if (c.endereco.linha)
     ld.address = { '@type': 'PostalAddress', streetAddress: c.endereco.linha, addressLocality: c.endereco.cidade, addressRegion: c.endereco.uf, postalCode: c.endereco.cep, addressCountry: 'BR' };
   if (cidade) ld.areaServed = cidade;
   const s = document.createElement('script');
@@ -515,6 +502,17 @@ function setupSeo() {
   s.textContent = JSON.stringify(ld);
   document.head.append(s);
 }
+
+/* ---------- imagem que não carregar vira um bloco neutro ---------- */
+document.addEventListener('error', (e) => {
+  const img = e.target;
+  if (img.tagName !== 'IMG' || img.dataset.fallback) return;
+  const ph = document.createElement('div');
+  ph.className = 'ph ' + img.className;
+  ph.setAttribute('role', 'img');
+  ph.setAttribute('aria-label', img.alt);
+  img.replaceWith(ph);
+}, true);
 
 /* ---------- init ---------- */
 renderHero();
@@ -536,4 +534,3 @@ setupReveal();
 setupLightbox();
 setupSeo();
 document.documentElement.classList.add('ready');
-if (demo) document.documentElement.classList.add('is-demo');
