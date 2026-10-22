@@ -76,6 +76,16 @@ export const site = {
     ],
   },
 
+  // Formulário de orçamento da seção Contato.
+  // Abre o WhatsApp com a mensagem pronta (se contato.whatsapp estiver preenchido);
+  // sem WhatsApp, copia a mensagem e abre o Direct do Instagram.
+  orcamento: {
+    titulo: 'Solicite um orçamento',
+    texto: 'Preencha os campos abaixo e envie sua mensagem direto para a arquiteta.',
+    botao: 'Enviar pelo WhatsApp',
+    botaoSemWhatsapp: 'Enviar pelo Instagram', // usado enquanto contato.whatsapp estiver vazio
+  },
+
   servicos: [
     {
       nome: 'Projeto arquitetônico',

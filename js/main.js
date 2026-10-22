@@ -280,29 +280,89 @@ function renderContact() {
         <dl class="contact__list reveal">
           ${rows.map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join('')}
         </dl>
-        <div class="contact__actions reveal">
-          <a class="btn btn--accent" href="${esc(ctaUrl)}"${ext(ctaUrl)}>${esc(ctaLabel)}</a>
-          ${rota ? `<a class="btn btn--line" href="${rota}" target="_blank" rel="noopener">Como chegar</a>` : ''}
+        ${rota ? `<div class="contact__actions reveal"><a class="btn btn--line" href="${rota}" target="_blank" rel="noopener">Como chegar</a></div>` : ''}
+        ${
+          endOk && c.mapaEmbed
+            ? `<div class="contact__map reveal"><iframe src="${esc(c.mapaEmbed)}" title="Mapa: ${esc(enderecoTexto())}" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>`
+            : ''
+        }
+      </div>
+      ${quoteForm()}
+    </div>`;
+  setupQuoteForm();
+}
+
+/* ---------- formulário de orçamento → WhatsApp ---------- */
+function quoteForm() {
+  const f = site.orcamento;
+  const opcoes = site.servicos.map((s) => `<option>${esc(s.nome)}</option>`).join('');
+  const aviso = c.whatsapp
+    ? 'Ao enviar, sua mensagem abre no WhatsApp, pronta para ser enviada.'
+    : 'Ao enviar, copiamos sua mensagem e abrimos o Direct do Instagram para você colar.';
+  return `
+    <form class="quote reveal" data-quote novalidate aria-labelledby="quote-titulo">
+      <h3 class="quote__title" id="quote-titulo">${esc(f.titulo)}</h3>
+      <p class="quote__lead">${esc(f.texto)}</p>
+      <div class="quote__field">
+        <label for="q-nome">Nome</label>
+        <input id="q-nome" name="nome" type="text" autocomplete="name" required>
+      </div>
+      <div class="quote__row">
+        <div class="quote__field">
+          <label for="q-email">E-mail</label>
+          <input id="q-email" name="email" type="email" autocomplete="email">
+        </div>
+        <div class="quote__field">
+          <label for="q-tel">WhatsApp</label>
+          <input id="q-tel" name="telefone" type="tel" autocomplete="tel" inputmode="tel">
         </div>
       </div>
       ${
-        endOk && c.mapaEmbed
-          ? `<div class="contact__map reveal"><iframe src="${esc(c.mapaEmbed)}" title="Mapa: ${esc(enderecoTexto())}" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>`
-          : `<div class="contact__art reveal" aria-hidden="true">${planSvg()}</div>`
+        opcoes
+          ? `<div class="quote__field">
+        <label for="q-servico">Tipo de projeto</label>
+        <select id="q-servico" name="servico"><option value="">Selecione (opcional)</option>${opcoes}</select>
+      </div>`
+          : ''
       }
-    </div>`;
+      <div class="quote__field">
+        <label for="q-msg">Sobre o projeto</label>
+        <textarea id="q-msg" name="mensagem" rows="4" placeholder="Ambiente, tamanho aproximado, cidade, prazo..." required></textarea>
+      </div>
+      <button class="btn btn--accent quote__btn" type="submit">${esc(c.whatsapp ? f.botao : f.botaoSemWhatsapp)}</button>
+      <p class="quote__note" data-quote-status aria-live="polite">${aviso}</p>
+    </form>`;
 }
 
-// Desenho técnico decorativo (planta abstrata) — elemento gráfico provisório da identidade
-function planSvg() {
-  return `<svg viewBox="0 0 400 400" fill="none" stroke="currentColor" stroke-width="1">
-    <rect x="40" y="40" width="320" height="320"/>
-    <path d="M40 180h140v180M180 180V40M180 260h180M260 260v100M260 40v140h100"/>
-    <path d="M180 120a60 60 0 0 1 60 60" stroke-dasharray="3 4"/>
-    <path d="M90 180a50 50 0 0 0 50-50" stroke-dasharray="3 4"/>
-    <circle cx="300" cy="310" r="22"/>
-    <path d="M20 40v-12M380 40v-12M20 28h360M28 40H16M28 360H16M16 40v320" stroke-width=".6"/>
-  </svg>`;
+function setupQuoteForm() {
+  const form = $('[data-quote]');
+  if (!form) return;
+  const status = $('[data-quote-status]', form);
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!form.reportValidity()) return;
+    const d = Object.fromEntries(new FormData(form));
+    const linhas = [`Olá! Meu nome é ${d.nome.trim()} e gostaria de solicitar um orçamento.`];
+    if (d.servico) linhas.push(`Tipo de projeto: ${d.servico}`);
+    if (d.email) linhas.push(`E-mail: ${d.email.trim()}`);
+    if (d.telefone) linhas.push(`WhatsApp: ${d.telefone.trim()}`);
+    linhas.push('', d.mensagem.trim());
+    const texto = linhas.join('\n');
+
+    if (c.whatsapp) {
+      window.open(`${whatsUrl}?text=${encodeURIComponent(texto)}`, '_blank', 'noopener');
+      status.textContent = 'Abrimos o WhatsApp com a sua mensagem. É só tocar em enviar.';
+    } else {
+      // O Direct do Instagram não aceita texto pronto: copiamos a mensagem para colar lá
+      let copiou = false;
+      try { await navigator.clipboard.writeText(texto); copiou = true; } catch {}
+      window.open(c.instagram.direct, '_blank', 'noopener');
+      status.textContent = copiou
+        ? 'Mensagem copiada! Cole no Direct do Instagram que acabou de abrir.'
+        : 'Abrimos o Direct do Instagram. Copie sua mensagem e envie por lá.';
+    }
+    if (c.whatsapp) form.reset();
+  });
 }
 
 function renderFooter() {
