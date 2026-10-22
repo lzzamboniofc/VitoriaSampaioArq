@@ -1,45 +1,47 @@
 # Vitória Sampaio Arquitetura — site
 
-Site estático, mobile-first, pronto para **GitHub Pages (branch `main`, pasta `/root`)**. Não precisa de build nem de servidor Node para funcionar publicado.
+Site estático, pronto para **GitHub Pages (branch `main`, pasta raiz)**. Não precisa de build nem de servidor.
+
+Endereço: https://lzzamboniofc.github.io/VitoriaSampaioArq/
 
 ## Editar conteúdo
 
-Tudo fica em **`js/config.js`**: nome, contatos, textos, serviços, projetos, processo, FAQ, depoimentos e fotos.
+Tudo fica em **`js/config.js`**:
 
-- Os textos e as fotos atuais são **ilustrativos** (fotos do Unsplash). Troque pelas fotos reais dos projetos em `assets/img/` e atualize o `src` de cada imagem.
-- Campos vazios não aparecem no site. Se uma imagem não carregar, aparece um bloco neutro no lugar.
-- Seções **Antes e depois** e **Depoimentos** só aparecem quando houver conteúdo real. O menu se ajusta sozinho.
-- Mapa e botão “Como chegar” aparecem quando o endereço é preenchido.
-- Botões de orçamento usam `atendimento.url` → senão WhatsApp → senão Direct do Instagram.
+- Nome da marca, menu e botões;
+- Textos do hero, do "Sobre" e da seção de contato;
+- Projetos do portfólio (título, categoria, detalhe e imagem) e filtros;
+- WhatsApp, telefone, e-mail, local e Instagram.
 
-## Comandos (Node.js)
+Campos vazios não aparecem no site. Para trocar uma imagem, use um link ou coloque o arquivo em `assets/img/` e informe o caminho (ex.: `'assets/img/casa-01.webp'`).
 
-```bash
-npm install
-npm run dev          # servidor local com recarga
-npm run imagens      # converte fotos de assets/originais/ em WebP em assets/img/
-```
+> Os contatos atuais (WhatsApp, telefone e e-mail) são de exemplo. Troque pelos reais antes de divulgar o site.
 
-## Publicar no GitHub Pages
+## Formulário de contato
 
-1. Envie esta pasta para a raiz da branch `main` do repositório.
-2. Settings → Pages → Source: *Deploy from a branch* → `main` / `(root)`.
-
-Todos os caminhos são relativos, então o site funciona em `usuario.github.io/repositorio/`. O arquivo `.nojekyll` evita processamento do Jekyll.
-
-## Identidade provisória
-
-O Instagram não pôde ser lido automaticamente, então a paleta (neutros quentes, grafite e acento terroso), a tipografia (Instrument Serif + Manrope) e o monograma “VS” do favicon são **provisórios**. Troque os tokens no topo de `css/styles.css` e o logotipo em `marca.logo` pela identidade oficial.
+O formulário não precisa de servidor: ao enviar, ele monta uma mensagem com os dados preenchidos e abre o WhatsApp do número configurado, pronta para envio.
 
 ## Estrutura
 
 ```
-index.html            página principal (seções renderizadas a partir do config)
+index.html            estrutura da página
+css/styles.css        visual (cores e fontes nos tokens de :root)
+js/config.js          ← conteúdo editável
+js/main.js            montagem da página e interações (filtros, ampliação, formulário)
 privacidade.html      política de privacidade
 404.html              página de erro personalizada
-css/styles.css        estilos e tokens de cor
-js/config.js          ← conteúdo editável
-js/main.js            renderização e interações (menu, lightbox, FAQ, comparador)
-assets/img/           imagens, favicon, imagem de compartilhamento
-scripts/              utilitário Node de otimização de imagens
+assets/img/           favicon, ícone e imagem de compartilhamento
+scripts/              utilitário de otimização de imagens
 ```
+
+## Comandos (opcionais, Node.js)
+
+```bash
+npm install
+npm run dev       # servidor local com recarga
+npm run imagens   # converte fotos de assets/originais/ em WebP em assets/img/
+```
+
+## Publicar no GitHub Pages
+
+Settings → Pages → Source: *Deploy from a branch* → `main` / `(root)`.
